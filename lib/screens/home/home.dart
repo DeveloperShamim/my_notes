@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:my_notes/services/auth.dart';
 
 class Home extends StatelessWidget {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('home'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Notes"),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () async {
+              await _auth.signOut();
+            },
+            icon: Icon(
+              Icons.logout_outlined,
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+          child: Container(
+        color: Colors.blue[100],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Container(),
+        ),
+      )),
     );
   }
 }

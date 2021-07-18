@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_notes/screens/wrapper.dart';
+import 'package:my_notes/services/auth.dart';
+import 'package:provider/provider.dart';
+
+import 'models/user.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,12 +12,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),
       ),
-      home: Wrapper(),
     );
   }
 }
