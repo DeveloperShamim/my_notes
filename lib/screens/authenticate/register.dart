@@ -6,14 +6,14 @@ import 'package:my_notes/components/rounded_input_field.dart';
 import 'package:my_notes/components/rounded_password_field.dart';
 import 'package:my_notes/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
 
   String email = "";
@@ -29,7 +29,7 @@ class _SignInState extends State<SignIn> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Sign In",
+                "Sign Up",
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
@@ -55,28 +55,14 @@ class _SignInState extends State<SignIn> {
                 },
               ),
               RoundedButton(
-                text: "Login",
-                press: () {
-                  print("Email:" + email + " Pass: " + password);
-                },
+                text: "Sign up",
+                press: () {},
               ),
               RoundedButton(
-                text: "Create an account ",
+                text: "Already have an account",
                 press: () {
                   widget.toggleView();
                 },
-              ),
-              GestureDetector(
-                onTap: () async {
-                  dynamic result = await _auth.signInAnon();
-                  if (result == null) {
-                    print('error signing in');
-                  } else {
-                    print('signed in');
-                    print(result.uid);
-                  }
-                },
-                child: new Text("Sign in anno"),
               ),
             ],
           ),
