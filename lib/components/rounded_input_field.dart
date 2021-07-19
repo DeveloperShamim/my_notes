@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_notes/components/text_field_container.dart';
-
-import '../constants.dart';
+import 'package:my_notes/shared/constants.dart';
 
 class RoundedInputField extends StatelessWidget {
   final ValueChanged<String> validator;

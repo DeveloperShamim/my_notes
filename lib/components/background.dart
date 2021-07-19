@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-import '../constants.dart';
+import 'package:my_notes/shared/constants.dart';
 
 class Background extends StatelessWidget {
   final Widget child;

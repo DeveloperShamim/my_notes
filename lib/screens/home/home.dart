@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_notes/components/background.dart';
+import 'package:my_notes/models/user.dart';
 import 'package:my_notes/services/auth.dart';
-
-import '../../constants.dart';
+import 'package:my_notes/shared/constants.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -24,14 +28,19 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-          child: Container(
-        decoration: boxDecoration,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Container(),
+      body: Background(
+        child: Container(
+          child: SafeArea(
+              child: Container(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Container(
+                child: Text(user.uid),
+              ),
+            ),
+          )),
         ),
-      )),
+      ),
     );
   }
 }
