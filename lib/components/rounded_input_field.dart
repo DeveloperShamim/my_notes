@@ -5,10 +5,12 @@ import 'package:my_notes/components/text_field_container.dart';
 import '../constants.dart';
 
 class RoundedInputField extends StatelessWidget {
+  final ValueChanged<String> validator;
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
   const RoundedInputField({
+    this.validator,
     Key key,
     this.hintText,
     this.icon = Icons.person,
@@ -18,15 +20,16 @@ class RoundedInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(
+          labelText: hintText,
           icon: Icon(
             icon,
             color: kPrimaryColor,
           ),
-          hintText: hintText,
           border: InputBorder.none,
         ),
       ),
